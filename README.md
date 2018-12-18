@@ -1,36 +1,39 @@
 # Gitray
 
-在系统状态栏添加一个图标, 用来显示所关注的 git 项目是否有未提交或者未推送的改动
+add an icon to systray, to indicate uncommited / unpushed changes of your git repositories
 
 ![img](img/tray.png)
 ![img](img/menu.png)
 
----
+## Usage
 
-## 使用方法
-
-### 下载
-
-编译
+### download
 
 ```sh
+git clone https://github.com/ttchengcheng/gitray.git
+```
+
+### build
+
+```sh
+cd gitray
 go build
 ```
 
-### 添加 git 项目
+### add git repositories
 
 ```sh
-# 假设你的有一个项目在 /Users/yourname/project/project1
+# a project at /Users/yourname/project/project1
 cd /Users/yourname/project/project1
-# 假设你 clone 的 gitray 目录在 /Users/yourname/project/gitray
+# and the cloned gitray is at /Users/yourname/project/gitray
 pwd >> /Users/yourname/project/gitray/config.txt
 
-# 假设你的还有一个项目在 /Users/yourname/project/project2
+# There is another project at /Users/yourname/project/project2
 cd /Users/yourname/project/project1
 pwd >> /Users/yourname/project/gitray/config.txt
 ```
 
-### 运行
+### Run
 
 ```sh
 # macOS
@@ -38,4 +41,4 @@ pwd >> /Users/yourname/project/gitray/config.txt
 
 ```
 
-PS: win 版本还没测过, 理论上是可用的 😛
+PS: it is not tested on win, maybe it works 😛
