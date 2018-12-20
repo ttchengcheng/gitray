@@ -2,8 +2,7 @@
 
 add an icon to systray, to indicate uncommited / unpushed changes of your git repositories
 
-![img](img/tray.png)
-![img](img/menu.png)
+![img](img/README-105015.png)
 
 ## Usage
 
@@ -35,10 +34,31 @@ pwd >> /Users/yourname/project/gitray/config.txt
 
 ### Run
 
-```sh
-# macOS
+```bash
 ./gitray &
+```
 
+### Some useful bash functions
+
+add current directory to gitray
+
+```bash
+gw() {
+  echo add $(pwd) to git watching list
+  pwd >> ~/your_gitray_dir/config.txt
+}
+```
+
+start or restart gittray
+
+```bash
+gtry() {
+  echo 'kill running gitray'
+  kill $(ps aux | grep '[g]itray' | awk '{print $2}') >/dev/null
+
+  echo 'start gitray'
+  ~/your_gitray_dir/gitray &
+}
 ```
 
 PS: it is not tested on win, maybe it works 😛

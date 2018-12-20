@@ -36,7 +36,7 @@ func onReady() {
 	go func() {
 		for {
 			status := getGitStatus()
-			systray.SetTitle(strconv.Itoa(status.uncommit + status.unpushed))
+			systray.SetTitle(strconv.Itoa(status.uncommit) + "|" + strconv.Itoa(status.unpushed))
 			systray.SetTooltip(strconv.Itoa(status.uncommit) + "change(s) not committed\n" + strconv.Itoa(status.unpushed) + "change(s) not pushed")
 
 			// update every 20 sec(s)
