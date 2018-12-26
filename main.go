@@ -43,8 +43,8 @@ func onReady() {
 			}
 			systray.SetTooltip(strconv.Itoa(status.uncommit) + "change(s) not committed\n" + strconv.Itoa(status.unpushed) + "change(s) not pushed")
 
-			// update every 20 sec(s)
-			time.Sleep(20 * time.Second)
+			// update every 7 sec(s)
+			time.Sleep(7 * time.Second)
 		}
 	}()
 }
