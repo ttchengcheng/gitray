@@ -36,7 +36,11 @@ func onReady() {
 	go func() {
 		for {
 			status := getGitStatus()
-			systray.SetTitle(strconv.Itoa(status.uncommit) + "|" + strconv.Itoa(status.unpushed))
+			if status.uncommit+status.unpushed < 1 {
+				systray.SetTitle("")
+			} else {
+				systray.SetTitle(strconv.Itoa(status.uncommit) + "|" + strconv.Itoa(status.unpushed))
+			}
 			systray.SetTooltip(strconv.Itoa(status.uncommit) + "change(s) not committed\n" + strconv.Itoa(status.unpushed) + "change(s) not pushed")
 
 			// update every 20 sec(s)
@@ -144,8 +148,8 @@ func getGitStatus() gitStatus {
 		curStatus.uncommit = len(strings.Split(cmdOutputStr, "\n")) - 1
 		total.uncommit += curStatus.uncommit
 
-		menu.SetTitle("[" + strconv.Itoa(curStatus.uncommit) + "|" + strconv.Itoa(curStatus.unpushed) + "] " + fullPath)
-		menu.SetTooltip(strconv.Itoa(curStatus.uncommit) + "change(s) not committed\n" + strconv.Itoa(curStatus.unpushed) + "change(s) not pushed")
+		menu.SetTitle("[" + strconv.Itoa(curStatus.uncommit) + "|" + strconv.Itoa(curStatus.unpushed) + "] " + path.Base(fullPath))
+		menu.SetTooltip(fullPath + "\n\n" + strconv.Itoa(curStatus.uncommit) + " change(s) not committed\n" + strconv.Itoa(curStatus.unpushed) + " change(s) not pushed")
 	}
 
 	return total
